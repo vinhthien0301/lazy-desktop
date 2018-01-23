@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="20px"
+    android:paddingLeft="16px"
+    android:background="@color/fragment_manage_list_item_background"
+    android:paddingRight="16px"
+    android:paddingBottom="20px"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/txt_name"
+        style="@style/fragment_manage_list_item_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdsadas"/>
+    <TextView
+        style="@style/fragment_manage_list_item_white"
+        android:id="@+id/txt_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdsadas"/>
+    <LinearLayout
+        android:layout_marginTop="15px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/fragment_manage_list_item_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tổng tốc độ: "/>
+        <TextView
+            android:id="@+id/txt_speed"
+            android:layout_marginLeft="10px"
+            android:textColor="@color/text_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/fragment_manage_list_item_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shares / Reject :"/>
+        <TextView
+            android:id="@+id/txt_share"
+            android:layout_marginLeft="10px"
+            android:textColor="@color/text_green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            style="@style/fragment_manage_list_item_white"
+            android:layout_marginLeft="5px"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="/"/>
+        <TextView
+            android:id="@+id/txt_reject"
+            android:layout_marginLeft="10px"
+            android:layout_width="wrap_content"
+            android:textColor="@android:color/holo_red_light"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="8px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/fragment_manage_list_item_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hoạt động liên tục:"/>
+        <TextView
+            android:id="@+id/txt_work_time"
+            android:layout_marginLeft="10px"
+            android:textColor="@color/text_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="8px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/fragment_manage_list_item_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hố đào:"/>
+        <TextView
+            android:id="@+id/txt_mine_hole"
+            android:layout_marginLeft="10px"
+            android:textColor="@color/text_blue"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="asdsadas"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="15px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            style="@style/fragment_manage_list_item_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhiệt độ và tốc độ quạt:"/>
+        <TextView
+            style="@style/fragment_manage_list_item_pink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPU0: (76C - 63%)"/>
+        <TextView
+            style="@style/fragment_manage_list_item_pink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPU1: (76C - 63%)"/>
+        <TextView
+            style="@style/fragment_manage_list_item_pink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPU2: (76C - 63%)"/>
+        <TextView
+            style="@style/fragment_manage_list_item_pink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPU3: (76C - 63%)"/>
+        <TextView
+            style="@style/fragment_manage_list_item_pink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPU4: (76C - 63%)"/>
+        <TextView
+            style="@style/fragment_manage_list_item_pink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPU5: (76C - 63%)"/>
+        <TextView
+            style="@style/fragment_manage_list_item_pink"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPU6: (76C - 63%)"/>
+
+    </LinearLayout>
+</LinearLayout>

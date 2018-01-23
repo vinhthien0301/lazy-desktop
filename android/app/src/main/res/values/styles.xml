@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="fragment_manage_list_item_white" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+    <style name="fragment_manage_list_item_pink" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/text_pink</item>
+    </style>
+
+</resources>
