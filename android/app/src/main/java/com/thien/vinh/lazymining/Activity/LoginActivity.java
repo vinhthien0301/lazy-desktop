@@ -1,5 +1,7 @@
 package com.thien.vinh.lazymining.Activity;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
@@ -9,7 +11,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.text.SpannableString;
+import android.text.TextWatcher;
 import android.text.style.UnderlineSpan;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +24,7 @@ import android.widget.TextView;
 
 import com.thien.vinh.lazymining.Fragment.ContactFragment;
 import com.thien.vinh.lazymining.Fragment.ManageFragment;
+import com.thien.vinh.lazymining.LocalData.SharePreference;
 import com.thien.vinh.lazymining.R;
 import com.thien.vinh.lazymining.Service.ApiService;
 import com.thien.vinh.lazymining.Utility.Enum;
@@ -30,7 +35,7 @@ import org.json.JSONObject;
 
 import cz.msebera.android.httpclient.Header;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener,View.OnFocusChangeListener,TextWatcher {
     private TextView tvSignup;
     private TextView tvErrEmail;
     private TextView tvErrPw;
@@ -47,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Utility.hideTilteBar(this);
         initUi();
         Utility.setUnderlineText("ĐĂNG KÝ",tvSignup);
-
+        checkAlreadyLogin();
     }
 
     private void initUi(){
@@ -58,10 +63,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         btnLogin = (Button) findViewById(R.id.btn_log_in);
         etEmail = (EditText) findViewById(R.id.et_email);
         etPw = (EditText) findViewById(R.id.et_pw);
-        etEmail.setOnFocusChangeListener(this);
+//        etEmail.setOnFocusChangeListener(this);
         lnMain.setOnClickListener(this);
         btnLogin.setOnClickListener(this);
         etEmail.requestFocus();
+        etEmail.addTextChangedListener(this);
+        etPw.addTextChangedListener(this);
     }
 
     @Override
@@ -83,6 +90,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
+
+    private void checkAlreadyLogin(){
+        String authString = SharePreference.getAuth(this);
+        if(authString != null && authString.length() > 0){
+            Utility.showToast(this,"có dữ liệu");
+            goToMainpage();
+        }else {
+            Utility.showToast(this,"không có dữ liệu");
+        }
+    }
     private void logIn(){
 
         ApiService.login(etEmail.getText().toString(),etPw.getText().toString(),new ApiService.Callback() {
@@ -91,11 +108,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 try {
                     String responseCode = response.getString("response_code");
-                    if(responseCode == Enum.SUCC_LOGIN){
+                    if(responseCode.equals(Enum.SUCC_LOGIN)){
                         JSONObject obj = response.getJSONObject("data");
                         String token = obj.getString("token");
                         String email = obj.getString("email");
-                        
+                        SharePreference.saveAuth(LoginActivity.this,obj);
+                        Utility.showToast(LoginActivity.this,"succ log in");
+                        goToMainpage();
                     }else {
                         Utility.showToast(LoginActivity.this,"Sai tài khoản hoặc mật khẩu");
                     }
@@ -110,6 +129,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Utility.showToast(LoginActivity.this,"Lỗi mạng");
             }
         });
+    }
+
+    private void goToMainpage(){
+        Intent newIntent = new Intent(this,MainActivity.class);
+        newIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        newIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(newIntent);
     }
 
     private void checkEmail(){
@@ -157,6 +183,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     checkPassword();
                 }
                 break;
+        }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+        if(etEmail.isFocused()){
+            checkEmail();
+        }else if(etPw.isFocused()){
+            checkPassword();
         }
     }
 }

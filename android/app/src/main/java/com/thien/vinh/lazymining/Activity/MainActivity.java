@@ -66,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
     private void selectFragment(MenuItem item) {
         Fragment frag = null;
         // init corresponding fragment
+        if(item == null){
+            return;
+        }
         switch (item.getItemId()) {
             case R.id.menu_manage:
                 frag = ManageFragment.newInstance();

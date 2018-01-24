@@ -45,8 +45,27 @@ public class ApiService {
                 callback.onFailure(statusCode,headers,res,t);
             }
         });
+    }
 
+    public static void load(String email,String token,final Callback callback){
+        AsyncHttpClient client = new AsyncHttpClient();
 
+        RequestParams params = new RequestParams();
+        params.put("email", email);
+        params.put("token", token);
+        client.get(GET_MINER_URL, params, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // Root JSON in response is an dictionary i.e { "data : [ ... ] }
+                // Handle resulting parsed JSON response here
+                callback.onSuccess(statusCode,headers,response);
+            }
 
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String res, Throwable t) {
+                // called when response HTTP status is "4XX" (eg. 401, 403, 404)
+                callback.onFailure(statusCode,headers,res,t);
+            }
+        });
     }
 }

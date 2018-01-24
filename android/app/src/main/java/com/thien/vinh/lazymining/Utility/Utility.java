@@ -2,6 +2,7 @@ package com.thien.vinh.lazymining.Utility;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.thien.vinh.lazymining.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -51,6 +53,11 @@ public class Utility {
     public static void showToast(Activity activity,String text){
         Toast.makeText(activity, text,
                 Toast.LENGTH_LONG).show();
+    }
+
+    public static int getColorFromResource(Context mContext,int id){
+        int backgroundColor = ContextCompat.getColor(mContext, id);
+        return backgroundColor;
     }
 
 

@@ -9,16 +9,18 @@
 
 <RelativeLayout
     android:layout_width="match_parent"
-    android:layout_height="50px"
+    android:layout_height="140px"
     android:paddingLeft="10px"
     android:background="@color/colorPrimary"
     android:paddingRight="10px"
     android:orientation="horizontal">
-    <!--<Button-->
-        <!--android:layout_width="40px"-->
-        <!--android:layout_height="40px"-->
-        <!--android:layout_alignParentLeft="true"-->
-        <!--android:layout_centerVertical="true"/>-->
+    <ImageView
+        android:layout_width="50px"
+        android:layout_height="50px"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/app"
+        android:layout_marginLeft="5px"
+        android:layout_centerVertical="true"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -36,10 +38,11 @@
 </RelativeLayout>
     <ListView
         android:id="@+id/lv_miner"
-        android:paddingLeft="16px"
-        android:paddingRight="16px"
-        android:paddingTop="16px"
-        android:dividerHeight="20px"
+        android:paddingLeft="30px"
+        android:paddingRight="30px"
+        android:paddingTop="40px"
+        android:paddingBottom="40px"
+        android:dividerHeight="50px"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ListView>
 </LinearLayout>

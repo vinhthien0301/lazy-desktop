@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
+        design:itemIconTint="@drawable/bottom_menu_tint"
         design:itemTextColor="@drawable/manage_fragment_menu_botton_text_color"
         android:background="@color/manage_fragment_menu_background_text_color"
         design:menu="@menu/bottom_nav_items" />

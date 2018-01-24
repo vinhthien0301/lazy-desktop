@@ -16,5 +16,8 @@
     <color name="text_pink">#ff81f3</color>
     <color name="color_a">#cdcdcd</color>
     <color name="color_b">#c7c7c7</color>
+    <color name="color_c">#808184</color>
+    <color name="color_d">#e9f711</color>
+    <color name="color_e">#7d494a</color>
 
 </resources>

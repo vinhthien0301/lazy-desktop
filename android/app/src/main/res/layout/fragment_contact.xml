@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50px"
+        android:layout_height="140px"
         android:paddingLeft="10px"
         android:background="@color/colorPrimary"
         android:paddingRight="10px"

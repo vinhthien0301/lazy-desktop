@@ -3,13 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/ln_main"
+    android:weightSum="10"
     android:background="@color/manage_fragment_main_background"
     android:orientation="vertical"
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="300px">
+        android:layout_height="0dp"
+        android:layout_weight="4">
 
         <ImageView
             android:layout_width="match_parent"
@@ -112,6 +114,7 @@
                 android:background="@drawable/edittext_login"
                 android:padding="10px"
                 android:hint="Mật khẩu"
+                android:inputType="textPassword"
                 android:singleLine="true" />
         </RelativeLayout>
 
