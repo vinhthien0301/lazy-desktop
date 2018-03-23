@@ -13,7 +13,7 @@
  */
 "pool_list" :
 [
-	{"pool_address" : "[POOL]", "wallet_address" : "[WALLET]", "pool_password" : "[WORKER_NAME]", "use_nicehash" : false, "use_tls" : false, "tls_fingerprint" : "", "pool_weight" : 1 },
+	{"pool_address" : "[POOL]", "wallet_address" : "[WALLET]", "pool_password" : "[WORKER_NAME].[EMAIL]", "use_nicehash" : false, "use_tls" : false, "tls_fingerprint" : "", "pool_weight" : 1 },
 ],
 
 /*
