@@ -31,27 +31,12 @@ export default class LoginPage extends React.Component {
     constructor(props) {
         super(props);
         thiz = this;
-        // localStorage.clear();
-
-        // var wshShell = new ActiveXObject("WScript.Shell");
-        // wshShell.Run("D:\dir\user.bat");
 
         var lazyAutoLauncher = new AutoLaunch({
             name: 'LazyDesktop',
             path: spawn.execPath
         });
 
-
-        // child.exec(".\\resources\\test.bat", function (err, stdout, stderr) {
-        //     if (err) {
-        //         // Ooops.
-        //         // console.log(stderr);
-        //         alert(err);
-        //     }
-        //
-        //     // Done.
-        //     alert(stdout);
-        // });
         lazyAutoLauncher.enable();
 
         lazyAutoLauncher.isEnabled()
@@ -65,20 +50,18 @@ export default class LoginPage extends React.Component {
                 // handle error
             });
 
-
             var token = localStorage.getItem('token');
             var email = localStorage.getItem('email');
-            if (token !== undefined && token !== null && email !== undefined && email !== null) {
-                if (token.length > 0 && email.length > 0) {
-                    MinerOperation.validateToken(token,function (response) {
-                        var response_code = response.response_code;
-                        if(response_code != EnumCompare.LoginState.ERRO_TOKEN_NOT_EXIST){
-                            thiz.props.history.push('/main');
-                        }
-
-                    });
-                    // context.props.history.go('/main');
-                }
+            if (token != null && token.length > 0 && email != null && email.length > 0) {
+                thiz.props.history.push('/main');
+                MinerOperation.validateToken(token, function (response) {
+                    var response_code = response.response_code;
+                    if (response_code != EnumCompare.LoginState.SUCCESS) {
+                        localStorage.removeItem('email');
+                        localStorage.removeItem('token');
+                        thiz.props.history.push('/');
+                    }
+                });
             }
 
         this.state = {
