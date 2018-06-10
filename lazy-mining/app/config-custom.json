@@ -1,0 +1,10 @@
+{
+  "name": "LazyDesktop",
+  "version": "1.0.0",
+  "miner_poll": 5000,
+  "miner_timeout": 10000,
+  "server_monitor": {
+    "host": "yourdomain.com",
+    "port": "9090"
+  }
+}

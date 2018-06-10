@@ -1,0 +1,37 @@
+@import "~font-awesome/css/font-awesome.css";
+
+body {
+  position: relative;
+  color: white;
+  height: 100vh;
+  background-color: #F9F9F9;
+  font-family: Arial, Helvetica, Helvetica Neue, serif;
+  overflow-y: hidden;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #434247;
+  font-family: system,-apple-system,".SFNSDisplay-Regular","Helvetica Neue",Helvetica,"Segoe UI",sans-serif;
+  margin: 0 0 1rem;
+
+}
+
+p {
+  font-size: 24px;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  color: white;
+  opacity: 0.75;
+  text-decoration: none;
+}
+
+a:hover {
+  opacity: 1;
+  text-decoration: none;
+  cursor: pointer;
+}

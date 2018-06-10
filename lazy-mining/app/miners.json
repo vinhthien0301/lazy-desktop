@@ -1,0 +1,14 @@
+{
+  "miners": [
+    {
+      "host": "localhost",
+      "port": "2371",
+      "name": "Miner",
+      "coins_related": "ETH",
+      "pool": "asia1.ethermine.org:14444",
+      "wallet": "0x187DECCbCa1C3a6aE99451c65C55F9283149fb2B",
+      "software": "CLAYMORE",
+      "auto_start": false
+    }
+  ]
+}

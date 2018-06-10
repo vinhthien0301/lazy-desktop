@@ -1,0 +1,17 @@
+{
+  "name": "LazyDesktop",
+  "productName": "LazyDesktop",
+  "version": "1.4.0",
+  "description": "Ứng dụng giám sát và điều khiển máy đào từ xa",
+  "main": "./main.prod.js",
+  "author": {
+    "name": "Thien, Au Vinh",
+    "email": "vinh.thien0301@gmail.com",
+    "url": "https://github.com/vinhthien0301/lazy-desktop"
+  },
+  "scripts": {
+    "postinstall": "npm rebuild --runtime=electron --target=1.6.6 --disturl=https://atom.io/download/atom-shell --build-from-source"
+  },
+  "license": "MIT",
+  "dependencies": {}
+}
