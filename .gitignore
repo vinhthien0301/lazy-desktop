@@ -35,3 +35,5 @@ node_modules
 # Production config.json
 .idea
 package-lock.json
+
+source/package.json
