@@ -40,29 +40,15 @@ export default class LoginPage extends React.Component {
         lazyAutoLauncher.enable();
 
         lazyAutoLauncher.isEnabled()
-            .then(function (isEnabled) {
-                if (isEnabled) {
-                    return;
-                }
-                lazyAutoLauncher.enable();
-            })
-            .catch(function (err) {
-                // handle error
-            });
-
-            var token = localStorage.getItem('token');
-            var email = localStorage.getItem('email');
-            if (token != null && token.length > 0 && email != null && email.length > 0) {
-                thiz.props.history.push('/main');
-                MinerOperation.validateToken(token, function (response) {
-                    var response_code = response.response_code;
-                    if (response_code != EnumCompare.LoginState.SUCCESS) {
-                        localStorage.removeItem('email');
-                        localStorage.removeItem('token');
-                        thiz.props.history.push('/');
-                    }
-                });
+        .then(function (isEnabled) {
+            if (isEnabled) {
+                return;
             }
+            lazyAutoLauncher.enable();
+        })
+        .catch(function (err) {
+            // handle error
+        });
 
         this.state = {
             emailFirstFocus: true,
@@ -71,9 +57,26 @@ export default class LoginPage extends React.Component {
             errorPwContent: "",
             errorLoginContent: "",
             signInReady: false
+        };
+
+        var token = localStorage.getItem('token');
+        var email = localStorage.getItem('email');
+        if (token != null && token.length > 0 && email != null && email.length > 0) {
+            thiz.props.history.push('/main');
+            MinerOperation.validateToken(token, function (response) {
+                var response_code = response.response_code;
+                if (response_code != EnumCompare.SUCC_EXEC.SUCCESS) {
+                    localStorage.removeItem('email');
+                    localStorage.removeItem('token');
+                    thiz.props.history.push('/');
+                }
+            });
         }
 
+    }
 
+    componentDidMount(){
+        // nothing
     }
 
 
@@ -112,9 +115,11 @@ export default class LoginPage extends React.Component {
                         if (response.data.data != undefined && response.data.data !== null) {
                             var token = response.data.data.token;
                             var email = response.data.data.email;
-                            localStorage.setItem('token', token);
-                            localStorage.setItem('email', email);
-                            thiz.props.history.push('/main');
+                            localStorage.setItem('token', token); // not found callback for localStorage
+                            localStorage.setItem('email', email); // not found callback for localStorage
+                            // setTimeout(function() { // wait for localStorage done, then move page
+                                thiz.props.history.push('/main');
+                            // }, 500)
                         }
 
                     } else {

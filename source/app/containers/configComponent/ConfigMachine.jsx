@@ -15,6 +15,7 @@ export default class ConfigMachine extends React.Component {
 
         thiz.state = {
             coinPos: [],
+            softwarePos: "",
             runBatches: [],
             softwareDownloadLinks: [],
             coinOptions: null
@@ -257,8 +258,10 @@ export default class ConfigMachine extends React.Component {
                        placeholder="Nhập địa chỉ ví"/>
 
                 <div className="form-group">
-                    <label>Phần mềm đào</label>
-                    <select disabled={thiz.state.softwareDisabled} value={thiz.state.softwarePos} className="form-control"
+                    <label>Phần mềm đào: </label>
+                    <label className="form-control">{thiz.state.softwarePos}</label>
+
+                    <select style={{ display:'none' }} disabled={thiz.state.softwareDisabled} value={thiz.state.softwarePos} className="form-control"
                             onChange={thiz.onSoftwareChanged.bind(this)}>
                         {thiz.state.softwareOptions}
                     </select>

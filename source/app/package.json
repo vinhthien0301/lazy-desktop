@@ -1,7 +1,7 @@
 {
   "name": "LazyDesktop",
   "productName": "LazyDesktop",
-  "version": "1.4.0",
+  "version": "1.4.3",
   "description": "Ứng dụng giám sát và điều khiển máy đào từ xa",
   "main": "./main.prod.js",
   "author": {

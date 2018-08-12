@@ -1,8 +1,8 @@
 {
   "name": "LazyDesktop",
   "productName": "LazyDesktop",
-  "version": "1.4.0",
-  "description": "Ứng dụng giám sát và điều khiển máy đào từ xa",
+  "version": "1.4.3",
+  "description": "Ứng dụng giám sát máy đào từ xa",
   "scripts": {
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 node --trace-warnings ./test/runTests.js",
     "test-all": "npm run lint && npm run flow && npm run test && npm run build && npm run test-e2e",
@@ -86,7 +86,7 @@
       "provider": "github",
       "owner": "vinhthien0301",
       "repo": "lazy-desktop",
-      "token": "e5af49029dbbc9da1c432ef97cc939e4cff97677"
+      "token": "8583c4f87e271b114d812b6c50f77320fe56c9a2"
     }
   },
   "repository": {

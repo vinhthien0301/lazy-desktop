@@ -1,6 +1,7 @@
 import React from "react";
 import {Pane, Input, Button} from "react-photonkit";
 import MonitorTableRow from './MachineTableRow.jsx';
+import DatetimeHelper from './../../helpers/DatetimeHelper.jsx';
 
 import styles from '../../styles/main.scss';
 
@@ -36,16 +37,14 @@ export default class MonitorMachine extends React.Component {
         } else {
             return;
         }
-        var a = moment.utc().format('DD-MM-YYYY hh:mm A');
-        var localTime  = moment.utc(a).toDate();
-        localTime = moment(localTime).format('DD-MM-YYYY hh:mm A');
+
         this.states.logsHtml.push(
             <MonitorTableRow
                 key={key}
                 log={{
                     activity: content,
                     state: stateString,
-                    time: localTime,
+                    time: DatetimeHelper.getFullNowString(),
                     stateClass: stateClass
                 }}>
             </MonitorTableRow>);

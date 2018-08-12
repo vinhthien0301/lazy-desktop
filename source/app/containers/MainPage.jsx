@@ -55,6 +55,8 @@ var os = require('os');
 var claymoresInterval;
 var xmrStakInterval;
 
+var allDataReadyIntervalId;
+
 var thiz;
 
 export default class AppContainer extends React.Component {
@@ -128,34 +130,38 @@ export default class AppContainer extends React.Component {
 
     startOperation(){
 
-        thiz.fetchAllDataFromServer(function(machines, softwareJsonA) {
-            let machine_id = machineIdSync({original: true});
-            var downloadLinkIDChoice = machines[0].downloadLinkID;
-            var canStart = machines[0].auto_start;
-            if (canStart) {
-                for (var index = 0; index < softwareJsonA.data.rootDirs.length; index++) {
-                    if (softwareJsonA.data.rootDirs[index].machine_id == machine_id
-                        && softwareJsonA.data.rootDirs[index].download_link_id == downloadLinkIDChoice) {
-                        thiz.startMiningSoftware(softwareJsonA.data.rootDirs[index].root_dir, machines[0]);
-                        break;
+        if (allDataReadyIntervalId != null) {
+            return;
+        }
+        allDataReadyIntervalId = setInterval(function() { // Wait until internet ready to load all data from server
+            clearInterval(allDataReadyIntervalId);
+            allDataReadyIntervalId = allDataReadyIntervalId;
+            thiz.fetchAllDataFromServer(function(machines, softwareJsonA) {
+                let machine_id = machineIdSync({original: true});
+                var downloadLinkIDChoice = machines[0].downloadLinkID;
+                var canStart = machines[0].auto_start;
+                if (canStart) {
+                    for (var index = 0; index < softwareJsonA.data.rootDirs.length; index++) {
+                        if (softwareJsonA.data.rootDirs[index].machine_id == machine_id
+                            && softwareJsonA.data.rootDirs[index].download_link_id == downloadLinkIDChoice) {
+                            thiz.startMiningSoftware(softwareJsonA.data.rootDirs[index].root_dir, machines[0]);
+                            break;
+                        }
                     }
                 }
-            }
 
 
-            thiz.setState({
-                softwareDownloadLinks: softwareJsonA.data.downloadLinks,
-                rootDirs: softwareJsonA.data.rootDirs,
-                runBatches: softwareJsonA.data.runBatches,
-                machineConfigs: machines,
-            }, function() {
+                thiz.setState({
+                    softwareDownloadLinks: softwareJsonA.data.downloadLinks,
+                    rootDirs: softwareJsonA.data.rootDirs,
+                    runBatches: softwareJsonA.data.runBatches,
+                    machineConfigs: machines,
+                }, function() {
                     thiz.startProcess(machines);
 
+                });
             });
-        });
-
-
-
+        }, 2000);
     }
 
     componentDidMount(){
@@ -890,6 +896,7 @@ export default class AppContainer extends React.Component {
                             rootDirs: softwareJsonA.data.rootDirs,
                             runBatches: softwareJsonA.data.runBatches,
                             machineConfigs: machines,
+                            needConfigUpdate: true
                         }, function() {
                             thiz.startProcess(machines);
 

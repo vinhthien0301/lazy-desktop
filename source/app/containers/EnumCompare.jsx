@@ -27,7 +27,7 @@ class Constant {
         SUCC_UPDATE_RIG_MACHINE: "SUCC_UPDATE_RIG_MACHINE",
         ERRO_TOKEN_NOT_EXIST:  "ERRO_TOKEN_NOT_EXIST"
 
-};
+    };
 
     static DownloadLinkState = {
         SUCCESS: "SUCC_DOWNLOAD_LINK",
