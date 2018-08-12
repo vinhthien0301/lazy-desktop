@@ -134,9 +134,10 @@ export default class AppContainer extends React.Component {
             return;
         }
         allDataReadyIntervalId = setInterval(function() { // Wait until internet ready to load all data from server
-            clearInterval(allDataReadyIntervalId);
-            allDataReadyIntervalId = allDataReadyIntervalId;
             thiz.fetchAllDataFromServer(function(machines, softwareJsonA) {
+                clearInterval(allDataReadyIntervalId);
+                allDataReadyIntervalId = null;
+
                 let machine_id = machineIdSync({original: true});
                 var downloadLinkIDChoice = machines[0].downloadLinkID;
                 var canStart = machines[0].auto_start;
